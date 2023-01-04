@@ -4,7 +4,6 @@ import (
 	"data_faker/faker"
 	"data_faker/utils"
 	"flag"
-	"fmt"
 )
 
 var (
@@ -17,13 +16,16 @@ var (
 func main() {
 	flag.Parse()
 
-	data := utils.MarshalFileToJson(*input)
+	data := utils.UnmarshalFileToJson(*input)
 	customStructure := faker.MakeStructure(data)
 
+	outputData := make([]interface{}, 0)
 	for i := 0; i < *num_values; i++ {
 		v := faker.CreateFakeData(customStructure)
-		fmt.Println(v)
+		outputData = append(outputData, v.Interface())
 	}
+
+	utils.MarshalStructToJsonFile("test.json", outputData)
 
 	// ctx := context.Background()
 	// client := ps_utils.CreateClient(ctx, *project)

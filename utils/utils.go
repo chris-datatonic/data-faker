@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"io/ioutil"
 	"log"
+	"os"
 )
 
 type Config struct {
@@ -12,7 +13,7 @@ type Config struct {
 	JsonType  string
 }
 
-func MarshalFileToJson(path string) []Config {
+func UnmarshalFileToJson(path string) []Config {
 	data, err := ioutil.ReadFile(path)
 
 	if err != nil {
@@ -28,4 +29,14 @@ func MarshalFileToJson(path string) []Config {
 	}
 
 	return result
+}
+
+func MarshalStructToJsonFile(path string, data []interface{}) {
+	b, err := json.Marshal(data)
+
+	if err != nil {
+		log.Fatalf("Unable to marshall data %v", data)
+	}
+
+	os.WriteFile(path, b, 0644)
 }
