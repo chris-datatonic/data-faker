@@ -10,6 +10,7 @@ var (
 	project    = flag.String("project", "", "Google Cloud Project")
 	topic_name = flag.String("topic", "", "Topic you wish to post to")
 	input      = flag.String("input", "", "Json file that contains faker structure")
+	output     = flag.String("output", "", "File path you want to write to")
 	num_values = flag.Int("num_values", 1, "Number of values you want to produce")
 )
 
@@ -25,7 +26,7 @@ func main() {
 		outputData = append(outputData, v.Interface())
 	}
 
-	utils.MarshalStructToJsonFile("test.json", outputData)
+	utils.MarshalStructToJsonFile(*output, outputData)
 
 	// ctx := context.Background()
 	// client := ps_utils.CreateClient(ctx, *project)
@@ -38,7 +39,7 @@ func main() {
 	// }
 
 	// if !exists {
-	// 	fmt.Println("Fuck I dont exist")
+	// 	fmt.Println("I dont exist")
 	// }
 
 }
