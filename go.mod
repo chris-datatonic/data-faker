@@ -8,6 +8,7 @@ require (
 	cloud.google.com/go/compute/metadata v0.2.3 // indirect
 	cloud.google.com/go/iam v0.9.0 // indirect
 	cloud.google.com/go/pubsub v1.28.0 // indirect
+	github.com/go-faker/faker/v4 v4.0.0-beta.4 // indirect
 	github.com/golang/groupcache v0.0.0-20210331224755-41bb18bfe9da // indirect
 	github.com/golang/protobuf v1.5.2 // indirect
 	github.com/google/go-cmp v0.5.9 // indirect
